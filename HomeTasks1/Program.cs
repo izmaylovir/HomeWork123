@@ -10,7 +10,7 @@
     Console.WriteLine($"Ваше имя:{firstname} {lastname}");
     Console.WriteLine($"Ваш пол:{gender}");
 }
-
+//8786877789
 // Задание 2 
 {
     Console.WriteLine("Введите наименование продукта:");
