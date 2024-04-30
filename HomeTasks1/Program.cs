@@ -1,6 +1,6 @@
 ﻿//Задание 1 
 {
-    Console.WriteLine("Задание 1:")
+    Console.WriteLine("Задание 1:");
     Console.WriteLine("Введите вашу фамилию");
     string lastname = Console.ReadLine();
     Console.WriteLine("Введите ваше имя");
