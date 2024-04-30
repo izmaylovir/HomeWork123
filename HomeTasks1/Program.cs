@@ -1,5 +1,6 @@
 ﻿//Задание 1 
 {
+    Console.WriteLine("Задание 1:")
     Console.WriteLine("Введите вашу фамилию");
     string lastname = Console.ReadLine();
     Console.WriteLine("Введите ваше имя");
@@ -135,6 +136,7 @@
 {
     Console.Write("Введите радиус окружности: ");
     double r = Convert.ToDouble(Console.ReadLine());
+    // TODO: заменить r * r на использование специального метода из класса Math
     double area = Math.PI * r * r;
     Console.WriteLine("Площадь окружности: " + area);
 }
@@ -144,6 +146,7 @@
     int number1 = Convert.ToInt32(Console.ReadLine());
     Console.Write("Введите второе целое число: ");
     int number2 = Convert.ToInt32(Console.ReadLine());
+    // TODO: переписать без создания дополнительных переменных
     int a = number1;
     number1 = number2;
     number2 = a;
