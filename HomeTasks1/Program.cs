@@ -207,10 +207,27 @@
 }
 //Задание 22 
 {
-    Console.Write("Введите букву: ");
-    char letter = Console.ReadKey().KeyChar;
-    int code = (int)letter;
-    Console.WriteLine();
-    Console.WriteLine("Код введенной буквы: " + code);
+    Console.WriteLine("Введите код символа:");
+    int charCode = Convert.ToInt32(Console.ReadLine());
+    char character = (char)charCode;
+    Console.WriteLine($"Символ, соответствующий коду {charCode}, это: {character}");
 }
 //Задание 23
+{
+    Console.WriteLine("Введите координаты левого верхнего угла (x1, y1):");
+    int x1 = Convert.ToInt32(Console.ReadLine());
+    int y1 = Convert.ToInt32(Console.ReadLine());
+    Console.WriteLine("Введите координаты правого нижнего угла (x2, y2):");
+    int x2 = Convert.ToInt32(Console.ReadLine());
+    int y2 = Convert.ToInt32(Console.ReadLine());
+    int x3 = x1; // x-координата левого нижнего угла
+    int y3 = y2; // y-координата левого нижнего угла
+    int x4 = x2; // x-координата правого верхнего угла
+    int y4 = y1; // y-координата правого верхнего угла
+    Console.WriteLine($"Координаты левого нижнего угла: ({x3}, {y3})");
+    Console.WriteLine($"Координаты правого верхнего угла: ({x4}, {y4})");
+}
+// Задание 24 
+{
+    Console.WriteLine("Введите тип преобразования (например, 'доллары в рубли', 'километры в мили', 'градусы Цельсия в Фаренгейты'):");
+    string input = Console.ReadLine();
