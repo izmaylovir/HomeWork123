@@ -7,8 +7,7 @@
     string firstname = Console.ReadLine();
     Console.WriteLine("Введите ваш пол");
     string gender = Console.ReadLine();
-    Console.WriteLine($"Ваше имя:{firstname} {lastname}");
-    Console.WriteLine($"Ваш пол:{gender}");
+    Console.WriteLine($"Ваше имя:{firstname} {lastname} {gender}");
 }
 //8786877789
 // Задание 2 
@@ -24,9 +23,12 @@
 
 // Задание 3
 {
-    Console.WriteLine("Введите ваше имя");
-    string firstname = Console.ReadLine();
-    Console.WriteLine($"Привет,{firstname}");
+  static void Main()
+  {
+   Console.Write("Введите ваше имя: ");
+   string name = Console.ReadLine();
+   Console.WriteLine("Привет, " + name + "!");
+    }
 }
 // Задание 4 
 {
@@ -36,7 +38,7 @@
     string firstname = Console.ReadLine();
     Console.WriteLine("Введите ваше отчество");
     string patronymic = Console.ReadLine();
-    Console.WriteLine($"Привет:{lastname} {patronymic} {lastname}");
+    Console.WriteLine($"Привет:{lastname} {patronymic} {firstname}");
 }
 // Задание 5 
 
@@ -82,29 +84,41 @@
 }
 // Задание 10
 {
-    Console.Write("Введите первое целое число: ");
-    int num1 = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Введите второе целое число: ");
-    int num2 = Convert.ToInt32(Console.ReadLine());
-    int sum = num1 + num2;
-    int difference = num1 - num2;
-    int product = num1 * num2;
-    int quotient = (int)num1 / num2;
-    Console.WriteLine("Сумма: " + sum);
-    Console.WriteLine("Разность: " + difference);
-    Console.WriteLine("Произведение: " + product);
-    Console.WriteLine("Частное: " + quotient);
+    static void Main()
+    {
+    Console.Write("Введите два целых числа ");
+    string input = Console.ReadLine();
+    string[] numbers = input.Split(' ');
+    int number1 = Convert.ToInt32(numbers[0]);
+    int number2 = Convert.ToInt32(numbers[1]);
+    int sum = number1 + number2;
+    int difference = number1 - number2;
+    int product = number1 * number2;
+    double quotient = (double)number1 / number2;
+    Console.WriteLine($"Сумма: {sum}");
+    Console.WriteLine($"Разность: {difference}");
+    Console.WriteLine($"Произведение: {product}");
+    Console.WriteLine($"Частное: {quotient}");
+   }
 }
 //Задание 11 
+class Program
 {
-    Console.Write("Введите первое целое число: ");
-    int num1 = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Введите второе целое число: ");
-    int num2 = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Введите третье целое число: ");
-    int num3 = Convert.ToInt32(Console.ReadLine());
-    int sum = num1 + num2 + num3;
-    Console.WriteLine("Сумма трех чисел: " + sum);
+    static void Main()
+    {
+        Console.Write("Введите три числа ");
+        string input = Console.ReadLine();
+
+        string[] numbers = input.Split(' ');
+        int sum = 0;
+
+        foreach (string number in numbers)
+        {
+            sum += Convert.ToInt32(number);
+        }
+
+        Console.WriteLine("Сумма введенных чисел: " + sum);
+    }
 }
 //Задание 12
 {
@@ -165,12 +179,12 @@
 //Задание 17
 {
     Console.Write("Введите количество рублей: ");
-    int rubles = Convert.ToInt32(Console.ReadLine());
+    double rubles = Convert.ToInt32(Console.ReadLine());
     Console.Write("Введите курс покупки доллара: ");
-    int buydollar = Convert.ToInt32(Console.ReadLine());
+    double buydollar = Convert.ToInt32(Console.ReadLine());
     Console.Write("Введите комиссию банка в рублях: ");
-    int bankcommission = Convert.ToInt32(Console.ReadLine());
-    int dollars = (rubles - bankcommission) / buydollar;
+    double bankcommission = Convert.ToInt32(Console.ReadLine());
+    double dollars = (rubles - bankcommission) / buydollar;
     Console.WriteLine("Получено долларов: " + dollars);
 }
 //Задание 18
