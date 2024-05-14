@@ -134,24 +134,33 @@
 }
 //Задание 15
 {
+   {
+    static void Main()
+    {
+    double radius, area;
+    const double pi = Math.PI;
     Console.Write("Введите радиус окружности: ");
-    double r = Convert.ToDouble(Console.ReadLine());
-    // TODO: заменить r * r на использование специального метода из класса Math
-    double area = Math.PI * r * r;
-    Console.WriteLine("Площадь окружности: " + area);
+    radius = Convert.ToDouble(Console.ReadLine());
+    area = pi * Math.Pow(radius, 2);
+    Console.WriteLine($"Площадь окружности: {area}");
+   }
+}
 }
 //Задание 16
 {
-    Console.Write("Введите первое целое число: ");
-    int number1 = Convert.ToInt32(Console.ReadLine());
-    Console.Write("Введите второе целое число: ");
-    int number2 = Convert.ToInt32(Console.ReadLine());
-    // TODO: переписать без создания дополнительных переменных
-    int a = number1;
-    number1 = number2;
-    number2 = a;
-    Console.WriteLine("Первое число после обмена: " + number1);
-    Console.WriteLine("Второе число после обмена: " + number2);
+    static void Main()
+    {
+     int number1, number2;
+     Console.Write("Введите первое целое число: ");
+     number1 = Convert.ToInt32(Console.ReadLine());
+     Console.Write("Введите второе целое число: ");
+     number2 = Convert.ToInt32(Console.ReadLine());
+     Console.WriteLine($"Исходные числа: {number1}, {number2}");      
+     number1 = number1 + number2;
+     number2 = number1 - number2;
+     number1 = number1 - number2;
+     Console.WriteLine($"Числа после обмена: {number1}, {number2}");
+    }
 }
 //Задание 17
 {
