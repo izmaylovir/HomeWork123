@@ -166,14 +166,12 @@ class Program
     {
      int number1, number2;
      Console.Write("Введите первое целое число: ");
-     number1 = Convert.ToInt32(Console.ReadLine());
+     number1 = Convert.ToDouble(Console.ReadLine());
      Console.Write("Введите второе целое число: ");
-     number2 = Convert.ToInt32(Console.ReadLine());
-     Console.WriteLine($"Исходные числа: {number1}, {number2}");      
-     number1 = number1 + number2;
-     number2 = number1 - number2;
-     number1 = number1 - number2;
-     Console.WriteLine($"Числа после обмена: {number1}, {number2}");
+     number2 = Convert.ToDouble(Console.ReadLine());
+     Console.WriteLine($"Исходные числа: {number1}, {number2}");
+        (number1, number2) = (number2, number1);
+        Console.WriteLine($"Числа после обмена: {number1}, {number2}");
     }
 }
 //Задание 17
