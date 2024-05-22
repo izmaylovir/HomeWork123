@@ -208,16 +208,25 @@ class Program
     Console.WriteLine("Объем параллелепипеда: " + volume);
 }
 //Задание 20 
+class MainClass
 {
-    Console.Write("Введите ширину параллелепипеда: ");
-    double width = Convert.ToDouble(Console.ReadLine());
-    Console.Write("Введите длину параллелепипеда: ");
-    double length = Convert.ToDouble(Console.ReadLine());
-    Console.Write("Введите высоту параллелепипеда: ");
-    double height = Convert.ToDouble(Console.ReadLine());
-    double volume = width * length * height;
-    Console.WriteLine("Объем параллелепипеда: " + volume);
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Введите букву:");
+        char inputLetter = Convert.ToChar(Console.ReadLine());
+
+        if (char.IsLetter(inputLetter))
+        {
+            char nextLetter = (char)(inputLetter + 1);
+            Console.WriteLine($"Следующая буква: {nextLetter}");
+        }
+        else
+        {
+            Console.WriteLine("Это не буква!");
+        }
+    }
 }
+
 //Задание 21
 {
     Console.Write("Введите букву: ");
