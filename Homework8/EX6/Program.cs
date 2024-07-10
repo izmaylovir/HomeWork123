@@ -15,8 +15,8 @@
 
     static void Main()
     {
-        DateTime startDate = new DateTime(2022, 10, 1); // Пример начальной даты
-        DateTime endDate = new DateTime(2022, 10, 10); // Пример конечной даты
+        DateTime startDate = new DateTime(2022, 10, 1); 
+        DateTime endDate = new DateTime(2022, 10, 10); 
         DateTime[] range = GetDateRange(startDate, endDate);
 
         Console.WriteLine("Даты в заданном промежутке:");

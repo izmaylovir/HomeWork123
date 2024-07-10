@@ -17,8 +17,8 @@
 
     static void Main()
     {
-        DateTime startDate = new DateTime(2022, 10, 1); // Пример начальной даты
-        DateTime endDate = new DateTime(2022, 10, 31); // Пример конечной даты
+        DateTime startDate = new DateTime(2022, 10, 1); 
+        DateTime endDate = new DateTime(2022, 10, 31); 
         int weekendDaysCount = CountWeekendDaysInRange(startDate, endDate);
 
         Console.WriteLine($"Количество выходных дней в заданном промежутке: {weekendDaysCount}");
