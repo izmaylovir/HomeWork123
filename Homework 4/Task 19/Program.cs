@@ -17,7 +17,6 @@ public class Library
     public void AddBook(Book book)
     {
         books.Add(book);
-        Console.WriteLine($"Book '{book.Title}' added to the library.");
     }
 
     public void RemoveBook(string title)
@@ -26,44 +25,53 @@ public class Library
         if (bookToRemove != null)
         {
             books.Remove(bookToRemove);
-            Console.WriteLine($"Book '{title}' removed from the library.");
-        }
-        else
-        {
-            Console.WriteLine($"Book '{title}' not found in the library.");
         }
     }
 
-    public void FindBook(string title)
+    public Book FindBook(string title)
     {
-        Book foundBook = books.Find(b => b.Title == title);
-        if (foundBook != null)
+        return books.Find(b => b.Title == title);
+    }
+
+    public void PrintAllBooks()
+    {
+        foreach (var book in books)
         {
-            Console.WriteLine($"Book '{title}' found in the library:");
-            foundBook.PrintInfo();
-        }
-        else
-        {
-            Console.WriteLine($"Book '{title}' not found in the library.");
+            book.PrintInfo();
         }
     }
 }
 
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main(string[] args)
     {
         Library library = new Library();
 
-        Book book1 = new Book { Title = "The Great Gatsby", Author = "F. Scott Fitzgerald", Pages = 180 };
-        Book book2 = new Book { Title = "To Kill a Mockingbird", Author = "Harper Lee", Pages = 281 };
+        Book book1 = new Book { Title = "Book1", Author = "Author1", Pages = 100 };
+        Book book2 = new Book { Title = "Book2", Author = "Author2", Pages = 150 };
 
         library.AddBook(book1);
         library.AddBook(book2);
 
-        library.FindBook("To Kill a Mockingbird");
+        Console.WriteLine("Список книг в библиотеке:");
+        library.PrintAllBooks();
 
-        library.RemoveBook("The Great Gatsby");
-        library.FindBook("The Great Gatsby");
+        Console.WriteLine("\nУдаление книги с названием 'Book1'");
+        library.RemoveBook("Book1");
+
+        Console.WriteLine("\nСписок книг в библиотеке после удаления:");
+        library.PrintAllBooks();
+
+        Console.WriteLine("\nПоиск книги с названием 'Book2':");
+        Book foundBook = library.FindBook("Book2");
+        if (foundBook != null)
+        {
+            foundBook.PrintInfo();
+        }
+        else
+        {
+            Console.WriteLine("Книга не найдена");
+        }
     }
 }
