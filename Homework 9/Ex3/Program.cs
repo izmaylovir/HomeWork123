@@ -36,4 +36,43 @@ class EmployeeService
         }
     }
 }
-1
+
+class Program
+{
+    static void Main()
+    {
+        Dictionary<int, Employee> employees = new Dictionary<int, Employee>
+        {
+            { 1, new Employee { Id = 1, Name = "John Doe", Position = "Manager", Salary = 50000 } },
+            { 2, new Employee { Id = 2, Name = "Jane Smith", Position = "Developer", Salary = 60000 } },
+            { 3, new Employee { Id = 3, Name = "Bob Johnson", Position = "Analyst", Salary = 45000 } }
+        };
+
+        EmployeeService employeeService = new EmployeeService();
+
+        Console.WriteLine("All Employee Names:");
+        var allEmployeeNames = employeeService.GetAllEmployeeNames(employees);
+        foreach (var name in allEmployeeNames)
+        {
+            Console.WriteLine(name);
+        }
+
+        Console.WriteLine("\nEmployee with Maximum Salary:");
+        var maxSalaryEmployee = employeeService.GetEmployeeWithMaxSalary(employees);
+        Console.WriteLine($"ID: {maxSalaryEmployee.Id}, Name: {maxSalaryEmployee.Name}, Position: {maxSalaryEmployee.Position}, Salary: {maxSalaryEmployee.Salary}");
+
+        Console.WriteLine("\nEmployee with Minimum Salary:");
+        var minSalaryEmployee = employeeService.GetEmployeeWithMinSalary(employees);
+        Console.WriteLine($"ID: {minSalaryEmployee.Id}, Name: {minSalaryEmployee.Name}, Position: {minSalaryEmployee.Position}, Salary: {minSalaryEmployee.Salary}");
+
+        Console.WriteLine("\nEmployees Sorted by Name:");
+        var sortedEmployees = employeeService.SortEmployeesByName(employees);
+        foreach (var employee in sortedEmployees.Values)
+        {
+            Console.WriteLine($"ID: {employee.Id}, Name: {employee.Name}, Position: {employee.Position}, Salary: {employee.Salary}");
+        }
+
+        Console.WriteLine("\nAll Employees Info:");
+        employeeService.PrintAllEmployeesInfo(employees);
+    }
+}

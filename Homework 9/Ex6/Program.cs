@@ -36,7 +36,7 @@ class CompanyService
         {
             return company.Id;
         }
-        return -1; 
+        return -1;
     }
 
     public void SortByNumberOfEmployees()
@@ -58,5 +58,35 @@ class CompanyService
         {
             yield return company;
         }
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        CompanyService companyService = new CompanyService();
+
+        Company company1 = new Company { Name = "Company A", Id = 1, NumberOfEmployees = 100 };
+        Company company2 = new Company { Name = "Company B", Id = 2, NumberOfEmployees = 50 };
+
+        companyService.AddCompany(company1);
+        companyService.AddCompany(company2);
+
+        Console.WriteLine("All Companies:");
+        companyService.PrintAllCompanies();
+
+        int companyId = companyService.FindCompanyIdByName("Company B");
+        Console.WriteLine($"ID of Company B: {companyId}");
+
+        companyService.SortByNumberOfEmployees();
+
+        Console.WriteLine("Companies sorted by number of employees:");
+        companyService.PrintAllCompanies();
+
+        companyService.RemoveCompanyById(1);
+
+        Console.WriteLine("After removing Company A:");
+        companyService.PrintAllCompanies();
     }
 }

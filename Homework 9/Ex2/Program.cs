@@ -15,7 +15,7 @@ class BookService
 
     public Book GetFirstBookOlderThanYear(List<Book> books, int year)
     {
-        return books.FirstOrDefault(b => b.Year > year);
+        return books.FirstOrDefault(b => b.Year < year);
     }
 
     public List<Book> SortByTitle(List<Book> books)
