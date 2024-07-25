@@ -5,7 +5,7 @@
     public int NumberOfEmployees { get; set; }
 }
 
-class CompanyService
+class CompanyService : IEnumerable<Company>;
 {
     private List<Company> companies = new List<Company>();
 
@@ -54,11 +54,13 @@ class CompanyService
 
     public IEnumerator<Company> GetEnumerator()
     {
-        foreach (var company in companies)
-        {
-            yield return company;
-        }
+        return companies.GetEnumerator();
     }
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
 }
 
 class Program

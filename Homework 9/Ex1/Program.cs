@@ -1,17 +1,26 @@
-﻿class DynamicArrayService
+﻿
+using System.Collections;
+
+public class DynamicArrayService
 {
-    private List<int> arrayList = new List<int>();
+    private ArrayList arrayList;
+
+    public DynamicArrayService()
+    {
+        arrayList = new ArrayList();
+    }
 
     public void AddElement(int element)
     {
         arrayList.Add(element);
-        Console.WriteLine("Current number of elements: " + arrayList.Count);
+        Console.WriteLine("Текущее количество элементов: " + arrayList.Count);
     }
 
-    public void RemoveElement(int value)
+    public void RemoveElement(int element)
     {
-        arrayList.Remove(value);
-        Console.WriteLine("Remaining elements: " + string.Join(", ", arrayList));
+        arrayList.Remove(element);
+        Console.WriteLine("Оставшиеся элементы:");
+        PrintAllElements();
     }
 
     public void FillWithRandomNumbers()
@@ -19,41 +28,50 @@
         Random random = new Random();
         for (int i = 0; i < 10; i++)
         {
-            arrayList.Add(random.Next(1, 101));
+            int randomNumber = random.Next(1, 101); 
+            arrayList.Add(randomNumber);
         }
     }
 
-    public void SearchElement(int value)
+    public void FindElementIndex(int element)
     {
-        int index = arrayList.IndexOf(value);
+        int index = arrayList.IndexOf(element);
         if (index != -1)
         {
-            Console.WriteLine("Element found at index: " + index);
+            Console.WriteLine("Индекс элемента " + element + ": " + index);
         }
         else
         {
-            Console.WriteLine("Element not found");
+            Console.WriteLine("Элемент не найден.");
         }
     }
 
     public void PrintAllElements()
     {
-        Console.WriteLine("All elements: " + string.Join(", ", arrayList));
+        Console.WriteLine("Элементы в списке:");
+        foreach (var element in arrayList)
+        {
+            Console.Write(element + " ");
+        }
+        Console.WriteLine();
     }
+}
 
+class Program
+{
     static void Main()
     {
-        DynamicArrayService dynamicArray = new DynamicArrayService();
+        DynamicArrayService dynamicArrayService = new DynamicArrayService();
 
-        dynamicArray.AddElement(5);
-        dynamicArray.AddElement(10);
+        dynamicArrayService.AddElement(5);
+        dynamicArrayService.AddElement(10);
 
-        dynamicArray.RemoveElement(5);
+        dynamicArrayService.FillWithRandomNumbers();
 
-        dynamicArray.FillWithRandomNumbers();
+        dynamicArrayService.RemoveElement(5);
 
-        dynamicArray.SearchElement(10);
+        dynamicArrayService.FindElementIndex(10);
 
-        dynamicArray.PrintAllElements();
+        dynamicArrayService.PrintAllElements();
     }
 }
