@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using System.Collections;
 
 public class DynamicArrayService
@@ -16,6 +16,12 @@ public class DynamicArrayService
         Console.WriteLine("Текущее количество элементов: " + arrayList.Count);
     }
 
+    public void AddElement(string element)
+    {
+        arrayList.Add(element);
+        Console.WriteLine("Текущее количество элементов: " + arrayList.Count);
+    }
+
     public void RemoveElement(int element)
     {
         arrayList.Remove(element);
@@ -28,12 +34,12 @@ public class DynamicArrayService
         Random random = new Random();
         for (int i = 0; i < 10; i++)
         {
-            int randomNumber = random.Next(1, 101); 
+            int randomNumber = random.Next(1, 101);
             arrayList.Add(randomNumber);
         }
     }
 
-    public void FindElementIndex(int element)
+    public void FindElement(object element)
     {
         int index = arrayList.IndexOf(element);
         if (index != -1)
@@ -59,19 +65,15 @@ public class DynamicArrayService
 
 class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        DynamicArrayService dynamicArrayService = new DynamicArrayService();
+        DynamicArrayService service = new DynamicArrayService();
 
-        dynamicArrayService.AddElement(5);
-        dynamicArrayService.AddElement(10);
-
-        dynamicArrayService.FillWithRandomNumbers();
-
-        dynamicArrayService.RemoveElement(5);
-
-        dynamicArrayService.FindElementIndex(10);
-
-        dynamicArrayService.PrintAllElements();
+        service.AddElement(5);
+        service.AddElement(10);
+        service.RemoveElement(5);
+        service.FillWithRandomNumbers();
+        service.FindElement(10);
+        service.PrintAllElements();
     }
 }
