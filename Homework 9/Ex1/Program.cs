@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Data.Common;
 
 public class DynamicArrayService
 {
@@ -10,19 +11,13 @@ public class DynamicArrayService
         arrayList = new ArrayList();
     }
 
-    public void AddElement(int element)
+    public void AddElement(object element)
     {
         arrayList.Add(element);
         Console.WriteLine("Текущее количество элементов: " + arrayList.Count);
     }
 
-    public void AddElement(string element)
-    {
-        arrayList.Add(element);
-        Console.WriteLine("Текущее количество элементов: " + arrayList.Count);
-    }
-
-    public void RemoveElement(int element)
+    public void RemoveElement(object element)
     {
         arrayList.Remove(element);
         Console.WriteLine("Оставшиеся элементы:");
@@ -62,18 +57,16 @@ public class DynamicArrayService
         Console.WriteLine();
     }
 }
-
 class Program
 {
     static void Main(string[] args)
     {
         DynamicArrayService service = new DynamicArrayService();
-
-        service.AddElement(5);
-        service.AddElement(10);
-        service.RemoveElement(5);
+        service.AddElement("Cat");
+        service.AddElement("Dog");
+        service.RemoveElement("Cat");
         service.FillWithRandomNumbers();
-        service.FindElement(10);
+        service.FindElement("Dog");
         service.PrintAllElements();
     }
 }
