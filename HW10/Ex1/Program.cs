@@ -114,7 +114,7 @@ namespace EmployeeManagement
         {
             Employee employee1 = new Employee("Иван Иванович Петров", 1, Position.Manager, 60000m, new DateTime(1990, 5, 20), new DateTime(2020, 1, 15));
             Employee employee2 = new Employee("Анна Сергеевна Смирнова", 2, Position.Developer, 50000m, new DateTime(1992, 8, 11), new DateTime(2021, 3, 10));
-            Employee employee3 = new Employee("Сергей Александрович Кузнецов", 3, Position.Designer, 55000m, new DateTime(1995, 12, 5), new DateTime(2022, 7, 1));
+            Employee employee3 = new Employee("Сергей Александрович Кузнецов", 3, Position.Designer, -10000m, new DateTime(1995, 12, 5), new DateTime(2022, 7, 1));
             Employee employee4 = new Employee("Ольга Викторовна Федорова", 4, Position.Analyst, 65000m, new DateTime(1988, 3, 30), new DateTime(2019, 11, 25));
             Employee employee5 = new Employee("Дмитрий Павлович Соловьев", 5, Position.Intern, 30000m, new DateTime(2002, 1, 15), new DateTime(2023, 6, 18));
             Employee[] employees = { employee1, employee2, employee3, employee4, employee5 };

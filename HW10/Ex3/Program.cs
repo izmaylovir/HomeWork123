@@ -1,123 +1,128 @@
-﻿public enum ApartmentType
+﻿public enum EducationType
 {
-    Studio,
-    OneRoom,
-    TwoRooms,
-    ThreeRooms,
-    FourRooms,
-    Other
+    Budget,
+    Commercial,
+    Target
 }
 
-public class FlatWithAccessorMethods
+public class Student
 {
-    private int id;
-    private string apartmentNumber;
-    private double area;
-    private string ownerFullName;
-    private ApartmentType apartmentType;
+    private string fullName;
+    private decimal scholarship;
+    private int groupNumber;
+    private EducationType educationType;
+    private int enrollmentYear;
+    private int? expulsionYear; 
 
-    public FlatWithAccessorMethods(int id, string apartmentNumber, double area, string ownerFullName, ApartmentType apartmentType)
+    public Student()
     {
-        this.id = id;
-        this.apartmentNumber = apartmentNumber;
-        this.area = area;
-        this.ownerFullName = ownerFullName;
-        this.apartmentType = apartmentType;
-    }
-    public int GetId() => id;
-    public void SetId(int value) => id = value;
-
-    public string GetApartmentNumber() => apartmentNumber;
-    public void SetApartmentNumber(string value) => apartmentNumber = value;
-
-    public double GetArea() => area;
-    public void SetArea(double value) => area = value;
-
-    public string GetOwnerFullName() => ownerFullName;
-    public void SetOwnerFullName(string value) => ownerFullName = value;
-
-    public ApartmentType GetApartmentType() => apartmentType;
-    public void SetApartmentType(ApartmentType value) => apartmentType = value;
-}
-
-public class FlatWithAutoProperties
-{
-    public int Id { get; set; }
-    public string ApartmentNumber { get; set; }
-    public double Area { get; set; }
-    public string OwnerFullName { get; set; }
-    public ApartmentType ApartmentType { get; set; }
-
-    public FlatWithAutoProperties(int id, string apartmentNumber, double area, string ownerFullName, ApartmentType apartmentType)
-    {
-        Id = id;
-        ApartmentNumber = apartmentNumber;
-        Area = area;
-        OwnerFullName = ownerFullName;
-        ApartmentType = apartmentType;
-    }
-}
-
-public class FlatWithProperties
-{
-    private int id;
-    private string apartmentNumber;
-    private double area;
-    private string ownerFullName;
-    private ApartmentType apartmentType;
-
-    public int Id
-    {
-        get { return id; }
-        set { id = value; }
+        fullName = string.Empty;
+        scholarship = 0;
+        groupNumber = 0;
+        educationType = EducationType.Budget;
+        enrollmentYear = DateTime.Now.Year; 
+        expulsionYear = null; 
     }
 
-    public string ApartmentNumber
+    public Student(string fullName, decimal scholarship, int groupNumber, EducationType educationType, int enrollmentYear, int? expulsionYear)
     {
-        get { return apartmentNumber; }
-        set { apartmentNumber = value; }
+        FullName = fullName;
+        Scholarship = scholarship;
+        GroupNumber = groupNumber;
+        EducationType = educationType;
+        EnrollmentYear = enrollmentYear;
+        ExpulsionYear = expulsionYear;
     }
 
-    public double Area
+    public string FullName
     {
-        get { return area; }
-        set { area = value; }
+        get => fullName;
+        set
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException("ФИО не может быть пустым.");
+            fullName = value;
+        }
     }
 
-    public string OwnerFullName
+    public decimal Scholarship
     {
-        get { return ownerFullName; }
-        set { ownerFullName = value; }
+        get => scholarship;
+        set => scholarship = value;
     }
 
-    public ApartmentType ApartmentType
+    public int GroupNumber
     {
-        get { return apartmentType; }
-        set { apartmentType = value; }
+        get => groupNumber;
+        set
+        {
+            if (value < 0)
+                throw new ArgumentException("Номер группы не может быть отрицательным.");
+            groupNumber = value;
+        }
     }
 
-    public FlatWithProperties(int id, string apartmentNumber, double area, string ownerFullName, ApartmentType apartmentType)
+    public EducationType EducationType
     {
-        Id = id;
-        ApartmentNumber = apartmentNumber;
-        Area = area;
-        OwnerFullName = ownerFullName;
-        ApartmentType = apartmentType;
+        get => educationType;
+        set => educationType = value;
+    }
+
+    public int EnrollmentYear
+    {
+        get => enrollmentYear;
+        set
+        {
+            if (value <= 0)
+                throw new ArgumentException("Год приказа о зачислении должен быть положительным числом.");
+            enrollmentYear = value;
+        }
+    }
+
+    public int? ExpulsionYear
+    {
+        get => expulsionYear;
+        set
+        {
+            if (value.HasValue && value < enrollmentYear)
+                throw new ArgumentException("Год приказа об отчислении не может быть меньше года приказа о зачислении.");
+            expulsionYear = value;
+        }
     }
 }
-
 class Program
 {
     static void Main(string[] args)
     {
-        var flat1 = new FlatWithAccessorMethods(1, "101", 45.5, "Иванов Иван", ApartmentType.OneRoom);
-        Console.WriteLine($"Квартира: {flat1.GetApartmentNumber()}, Владелец: {flat1.GetOwnerFullName()}");
-        var flat2
-= new FlatWithAutoProperties(2, "202", 60.0, "Петров Петр", ApartmentType.TwoRooms);
-        Console.WriteLine($"Квартира: {flat2.ApartmentNumber}, Владелец: {flat2.OwnerFullName}");
+        try
+        {
+            Student student1 = new Student();
+            Console.WriteLine("Студент 1:");
+            DisplayStudentInfo(student1);
+            Student student2 = new Student("Иванов Иван Иванович", 15000m, 101, EducationType.Budget, 2021, null);
+            Console.WriteLine("\nСтудент 2:");
+            DisplayStudentInfo(student2);
+            student2.FullName = "Петров Петр Петрович";
+            student2.Scholarship = 20000m;
+            student2.GroupNumber = 102;
+            student2.ExpulsionYear = 2023; 
 
-   
-        var flat3 = new FlatWithProperties(3, "303", 75.0, "Сидоров Сидор", ApartmentType.ThreeRooms);
-        Console.WriteLine($"Квартира: {flat3.ApartmentNumber}, Владелец: {flat3.OwnerFullName}");
+            Console.WriteLine("\nОбновленная информация о студенте 2:");
+            DisplayStudentInfo(student2);
+        }
+        catch (ArgumentException ex)
+        {
+            Console.WriteLine($"Ошибка: {ex.Message}");
+        }
+    }
+
+    static void DisplayStudentInfo(Student student)
+    {
+        Console.WriteLine($"ФИО: {student.FullName}");
+        Console.WriteLine($"Стипендия: {student.Scholarship} руб.");
+        Console.WriteLine($"Номер группы: {student.GroupNumber}");
+        Console.WriteLine($"Тип обучения: {student.EducationType}");
+        Console.WriteLine($"Год зачисления: {student.EnrollmentYear}");
+        Console.WriteLine($"Год отчисления: {(student.ExpulsionYear.HasValue ? student.ExpulsionYear.Value.ToString() : "Не указано")}");
     }
 }
